@@ -1,0 +1,23 @@
+{% extends 'base.html'%}
+{% block start %}
+<form class="col-6 mx-auto card p-3 shadow-lg" method="post" enctype="multipart/form-data">
+       {% csrf_token %}
+       <h1>Write Mail</h1>
+    <hr>
+  <div class = "mb-3">
+    <label for="recipe_name" class="form-lable">Subject</label>
+    <input name= "subject"type="text" required class=" form-control" >
+
+  </div>
+  <div class = "mb-3">
+    <label for="recipe_description" class="form-lable">Message</label>
+    <textarea  type="text" name="message" class="form-control" required> </textarea>
+    </div>
+    <div class="mb-3">
+    <label for="recipe_image" class="form-lable">Attach file</label>
+    <input name = "file" type="file" class=" form-control"  >
+    </div>
+    <button type="submit" class="btn btn-primary" style="background-color: green;">Send Email</button>
+    </form>
+
+{% endblock %}

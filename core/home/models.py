@@ -21,11 +21,11 @@ class UserProfile(models.Model):
 @receiver(post_save,sender=UserProfile)
 def call_api(sender, instance, **kwargs):
         ProfileHistory.objects.create(
-            user_create_by=instance.name, user=instance.user
+            user_create_by=instance.name, email=instance.email
         )
 class ProfileHistory(models.Model):
     user_create_by=models.CharField(max_length=100)
-    user=models.ForeignKey(UserProfile, on_delete=models.CASCADE, null=True)
+    email=models.EmailField(null=True)
     date_of_creation=models.DateField(auto_now_add=True)
 
 

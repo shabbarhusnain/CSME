@@ -1,0 +1,29 @@
+{% extends 'base.html'%}
+{% block start %}
+<div class="container col-6">
+    <form class="container" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Login Page</h1>
+        <hr>
+        {% if messages %}
+        {%for message in messages %}
+        <div class="alert alert-primary">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+
+        <div class="mt-3">
+        <label class="form-lable">Email</label>
+        <input name="email" type="email" required class="form-control" placeholder="Email@gmail.com">
+        </div>
+        <div class="mt-3">
+        <label class="form-lable">Password</label>
+        <input name="password" type="password" required class="form-control" placeholder="Enter your password here.">
+        </div>
+        <div class="mt-3">
+            <p>If not register <a href="/register/">Register Page</a></p>
+            <a href="/reset_page/">Forget Password</a>
+            <button type="submit" class="btn btn-success">Login</button>
+        </div>
+    </form>
+</div>
+{% endblock %}

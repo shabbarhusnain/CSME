@@ -1,0 +1,57 @@
+{% extends 'base.html'%}
+{% block start %}
+<div class="container">
+<form class="container shadow-lg mt-5" method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        <h1>Create User Profile.</h1>
+        <hr>
+        {% if messages %}
+        {%for message in messages %}
+        <div class="alert alert-primary">{{ message }}</div>
+        {% endfor %}
+        {% endif %}
+        <div class="mt-3">
+        <label class="form-lable">Name</label>
+        <input name="name" type="text" required class="form-control" placeholder="Enter name of user.">
+        </div>
+        <div class="mt-3">
+        <label class="form-lable">Email</label>
+        <input name="email" type="email" required class="form-control" placeholder="Enter user Email here.">
+        </div>
+        <div class="mt-3">
+        <label class="form-lable">Upload user image</label>
+        <input name="image" type="file" required class="form-control" placeholder="Enter user Email here.">
+        </div>
+        <div class="mt-3">
+            <button type="submit" class="btn btn-primary">Create Profile</button>
+        </div>
+        <div class="mt-3"><hr></div>
+    </form>
+</div>
+
+<a href="/send_email/" class="btn btn-primary container">Write Mail  </a>
+
+<div class="container mt-5">
+    <table>
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Created by</th>
+                <th>Email</th>
+                <th>Date of creation</th>
+            </tr>
+            
+        </thead>
+        <tbody>
+            {%for data in history %}
+            <tr>
+                <td>{{forloop.counter}}</td>
+                <td>{{data.user_create_by}}</td>
+                <td>{{data.email}}</td>
+                <td>{{data.date_of_creation}}</td>
+            </tr>{% endfor %}
+        </tbody>
+    </table>
+    <a href="/logout/">Logout</a>
+</div>
+{% endblock %}

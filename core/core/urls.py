@@ -27,7 +27,9 @@ urlpatterns = [
     path('login/',login_page,name='login_page'),
     path('register/',register_page,name='register_page'),
     path('send_email/',send_email,name='send_email'),
-    path('logout/',logout_page,name='logout_page')
+    path('logout/',logout_page,name='logout_page'),
+    path('reset_page/',reset_page,name='reset_page'),
+     path('forget_page/<str:email>/',forget_page,name='forget_page')
 ]
 
 if settings.DEBUG:
